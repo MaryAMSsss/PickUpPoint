@@ -1,0 +1,57 @@
+﻿<Window x:Class="Demo_var_6Last.Views.ContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo_var_6Last.Models"
+        mc:Ignorable="d"
+        Title="ContentWindow" Height="600" Width="800">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" >
+            <StackPanel.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Margin" Value="10"></Setter>
+                    <Setter Property="Height" Value="30"></Setter>
+                </Style>                
+            </StackPanel.Resources>
+            <TextBlock x:Name="userId">Имя заказчика</TextBlock>
+            <Label>Дата доставки заказа</Label>
+            <Label>Пункт выдачи заказа</Label>
+            <Label>Код получения</Label>
+            <Label>Статус</Label>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" >
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="14"></Setter>
+                    <Setter Property="Width" Value="250"></Setter>
+                    <Setter Property="Height" Value="30"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <DatePicker Name="dateOrderPicker" IsDropDownOpen="True" SelectedDateFormat="Short" Margin="0,27,0,0" Width="250"/>
+            <ComboBox Width="250" Margin="0,25,0,10" x:Name="pickUpCb">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="local:PickUpPoint">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="postIndexTbc" Text="{Binding PostIndex}" ></TextBlock>
+                            <TextBlock x:Name="cityTbc" Text="{Binding City}" ></TextBlock>
+                            <TextBlock x:Name="streetTbc" Text="{Binding Street}" ></TextBlock>
+                            <TextBlock x:Name="HouseTbc" Text="{Binding House}" ></TextBlock>
+                        </StackPanel>
+                        </DataTemplate>
+                </ComboBox.ItemTemplate>                
+            </ComboBox>            
+            <TextBox x:Name="pickUpCodeTB"></TextBox>
+            <TextBox x:Name="StatusTB"></TextBox>
+            <Button x:Name="addOrderBitton" Click="addOrderButton_Click">Add order</Button>
+            <Button Click="ExitButton_Click">Cancel</Button>
+            <!--<ComboBox x:Name="statusCb">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="local:">
+                        <TextBlock x:Name="Status" Text="{Binding }"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>-->            
+        </StackPanel>
+    </StackPanel>
+</Window>
